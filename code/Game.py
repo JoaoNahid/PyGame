@@ -1,4 +1,5 @@
 from code.Const import WIN_WIDTH, WIN_HEIGHT
+from code.Level import Level
 from code.Menu import Menu
 
 import pygame
@@ -8,11 +9,24 @@ class Game:
     def __init__(self):
         pygame.init()
         self.window = pygame.display.set_mode(size=(WIN_WIDTH, WIN_HEIGHT))
+        self.action = None
 
     def run(self):
         pygame.mixer_music.load('./assets/sounds/Dogs.mp3')
         pygame.mixer_music.play(-1)
         while True:
             menu = Menu(self.window)
-            menu.run()
-            pass
+            self.action = menu.run()
+
+            match self.action.lower():
+                case 'start game':
+                    level = Level(self.window, 'teste', 1)
+                case 'exit':
+                    self.quit()
+                case _:
+                    pass
+
+    @staticmethod
+    def quit():
+        pygame.quit()  # Close window
+        quit()  # End pygame
