@@ -10,7 +10,7 @@ class Menu:
     def __init__(self, window):
         self.window = window
         self.selected_option = 0
-        self.surf = pygame.image.load('./assets/images/MenuBg.png')
+        self.surf = pygame.image.load('./assets/images/MenuBg.png').convert_alpha()
         self.rect = self.surf.get_rect(left=0, top=0)
 
         self.menu_options = ('Start Game', 'Score', 'Exit' )
