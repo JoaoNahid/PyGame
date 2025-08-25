@@ -1,6 +1,10 @@
-import pygame
-from pygame.time import Clock
+import sys
 
+import pygame
+from pygame import Surface, Rect
+from pygame.font import Font
+
+from code.Const import COLOR_TEXT_WHITE, WIN_HEIGHT
 from code.Entity import Entity
 from code.EntityFactory import EntityFactory
 
@@ -13,6 +17,7 @@ class Level:
         self.game_mode = game_mode
         self.entity_list: list[Entity] = []
         self.entity_list.extend(EntityFactory.get_entity('Level1Bg'))
+        self.timeout = 20000 # 20 segundos
 
     def run(self):
         clock = pygame.time.Clock()
@@ -21,4 +26,24 @@ class Level:
             for ent in self.entity_list:
                 self.window.blit(source=ent.surf, dest=ent.rect)
                 ent.move()
+
+            for event in pygame.event.get():
+                # Close window
+                if event.type == pygame.QUIT:
+                    pygame.quit()  # Close window
+                    sys.exit()  # End pygame
+
+            # print text
+            self.level_text(14, f'{self.name} - Timeout: {self.timeout / 1000 :.1f}s', COLOR_TEXT_WHITE, (10, 5))
+            self.level_text(14, f'fps: {clock.get_fps() :.0f}', COLOR_TEXT_WHITE, (10, WIN_HEIGHT - 35))
+            self.level_text(14, f'Entities: {len(self.entity_list)}', COLOR_TEXT_WHITE, (10, WIN_HEIGHT - 20))
             pygame.display.flip()
+
+            # Degree timeout
+            self.timeout -= 1
+
+    def level_text(self, text_size: int, text: str, text_color: tuple, text_pos: tuple):
+        text_font: Font = pygame.font.SysFont(name='Montserrat', size=text_size)
+        text_surf: Surface = text_font.render(text, True, text_color)
+        text_rect: Rect = text_surf.get_rect(left=text_pos[0], top=text_pos[1])
+        self.window.blit(source=text_surf, dest=text_rect)
