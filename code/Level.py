@@ -1,4 +1,5 @@
 import pygame
+from pygame.time import Clock
 
 from code.Entity import Entity
 from code.EntityFactory import EntityFactory
@@ -14,7 +15,9 @@ class Level:
         self.entity_list.extend(EntityFactory.get_entity('Level1Bg'))
 
     def run(self):
+        clock = pygame.time.Clock()
         while True:
+            clock.tick(60)
             for ent in self.entity_list:
                 self.window.blit(source=ent.surf, dest=ent.rect)
                 ent.move()
