@@ -20,7 +20,7 @@ class Game:
 
             match self.action.lower():
                 case 'start game':
-                    level = Level(self.window, 'Level1', 1)
+                    level = Level(self.window, 'Level 1', 1)
                     level.run()
                 case 'exit':
                     self.quit()
