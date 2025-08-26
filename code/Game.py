@@ -19,8 +19,11 @@ class Game:
             self.action = menu.run()
 
             match self.action.lower():
-                case 'start game':
-                    level = Level(self.window, 'Level 1', 1)
+                case 'new game 1p':
+                    level = Level(self.window, 'Level 1', '1P')
+                    level.run()
+                case 'new game 2p - competitive':
+                    level = Level(self.window, 'Level 1', '2P')
                     level.run()
                 case 'exit':
                     self.quit()

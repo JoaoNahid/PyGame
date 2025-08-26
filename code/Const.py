@@ -8,6 +8,9 @@ COLOR_TEXT_WHITE = (255,255,255)
 
 # Speed
 ENTITY_SPEED = {
+    # Player
+    'Player1': 3,
+    'Player2': 3,
     # Level 1
     'Level1Bg0': 0,
     'Level1Bg1': 1,

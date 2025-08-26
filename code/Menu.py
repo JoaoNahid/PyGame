@@ -13,7 +13,7 @@ class Menu:
         self.surf = pygame.image.load('./assets/images/MenuBg.png').convert_alpha()
         self.rect = self.surf.get_rect(left=0, top=0)
 
-        self.menu_options = ('Start Game', 'Score', 'Exit' )
+        self.menu_options = ('New Game 1P', 'New Game 2P - Competitive', 'Score', 'Exit' )
 
     def run(self) -> str:
         while True:

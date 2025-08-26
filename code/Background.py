@@ -8,7 +8,7 @@ class Background(Entity):
         super().__init__(name, position, speed)
         pass
 
-    def move(self):
+    def move(self, two_players: bool = False):
         self.rect.centerx -= self.speed
         if self.rect.right <= 0:
             self.rect.left = WIN_WIDTH

@@ -12,5 +12,5 @@ class Entity(ABC):
         self.speed = speed
 
     @abstractmethod #decorator
-    def move(self):
+    def move(self, two_players: bool = False):
         pass

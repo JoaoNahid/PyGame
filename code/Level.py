@@ -17,6 +17,9 @@ class Level:
         self.game_mode = game_mode
         self.entity_list: list[Entity] = []
         self.entity_list.extend(EntityFactory.get_entity('Level1Bg'))
+        self.entity_list.append(EntityFactory.get_entity('Player1'))
+        if game_mode == '2P':
+            self.entity_list.append(EntityFactory.get_entity('Player2'))
         self.timeout = 20000 # 20 segundos
 
     def run(self):
@@ -25,7 +28,7 @@ class Level:
             clock.tick(60)
             for ent in self.entity_list:
                 self.window.blit(source=ent.surf, dest=ent.rect)
-                ent.move()
+                ent.move(self.game_mode == '2P')
 
             for event in pygame.event.get():
                 # Close window
