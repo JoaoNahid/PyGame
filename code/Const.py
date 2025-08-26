@@ -1,3 +1,5 @@
+import pygame
+
 WIN_WIDTH = 576
 WIN_HEIGHT = 324
 
@@ -11,6 +13,9 @@ ENTITY_SPEED = {
     # Player
     'Player1': 3,
     'Player2': 3,
+    # Enemy
+    'Enemy1': 3,
+    'Enemy2': 5,
     # Level 1
     'Level1Bg0': 0,
     'Level1Bg1': 1,
@@ -20,3 +25,6 @@ ENTITY_SPEED = {
     'Level1Bg5': 5,
     'Level1Bg6': 6,
 }
+
+# Event
+EVENT_ENEMY = pygame.USEREVENT + 1
