@@ -10,3 +10,6 @@ class Enemy(Entity):
     def move(self, two_players: bool = False):
         self.rect.centerx -= ENTITY_SPEED[self.name]
         pass
+
+    def shoot(self):
+        pass

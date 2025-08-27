@@ -37,9 +37,15 @@ ENTITY_HEALTH = {
     'Level1Bg6': 9999,
     'Player1': 1000,
     'Player2': 1000,
+    'Player1Shoot': 1000,
+    'Player2Shoot': 1000,
     'Enemy1': 100,
     'Enemy2': 300,
 }
 
+# Delay
+ENTITY_DELAY = {
+    'shoot': 10
+}
 # Event
 EVENT_ENEMY = pygame.USEREVENT + 1

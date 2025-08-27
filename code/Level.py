@@ -9,6 +9,8 @@ from code.Const import COLOR_TEXT_WHITE, WIN_HEIGHT, EVENT_ENEMY
 from code.Entity import Entity
 from code.EntityFactory import EntityFactory
 from code.EntityMediator import EntityMediator
+from code.Player import Player
+from code.Enemy import Enemy
 
 
 class Level:
@@ -34,6 +36,10 @@ class Level:
             for ent in self.entity_list:
                 self.window.blit(source=ent.surf, dest=ent.rect)
                 ent.move(self.game_mode == '2P')
+                if isinstance(ent, (Player, Enemy)):
+                    shoot = ent.shoot()
+                    if shoot:
+                        self.entity_list.append(shoot)
 
             for event in pygame.event.get():
                 # Close window
