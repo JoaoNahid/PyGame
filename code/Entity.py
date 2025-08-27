@@ -2,7 +2,7 @@ from abc import ABC, abstractmethod
 
 import pygame
 
-from code.Const import ENTITY_HEALTH
+from code.Const import ENTITY_HEALTH, ENTITY_DAMAGE
 
 
 # ABC mean that is a abstract class
@@ -14,6 +14,7 @@ class Entity(ABC):
         self.rect = self.surf.get_rect(left=position[0], top=position[1])
         self.speed = speed
         self.health = ENTITY_HEALTH[self.name]
+        self.damage = ENTITY_DAMAGE[self.name]
 
     @abstractmethod #decorator
     def move(self, two_players: bool = False):
